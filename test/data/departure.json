@@ -1,0 +1,258 @@
+{
+"DepartureBoard":{
+  "noNamespaceSchemaLocation":"https://open-api.bahn.de/bin/rest.exe/v1.0/xsd?name=hafasRestDepartureBoard.xsd",
+  "Departure":[{
+    "name":"IC 2229",
+    "type":"IC",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"18:14",
+    "date":"2016-09-08",
+    "direction":"Nürnberg Hbf",
+    "track":"3",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=669534%2F227587%2F255082%2F95637%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"IC 118",
+    "type":"IC",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"18:22",
+    "date":"2016-09-08",
+    "direction":"Münster(Westf)Hbf",
+    "track":"1",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=378666%2F136234%2F393094%2F70325%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"ICE 655",
+    "type":"ICE",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"18:25",
+    "date":"2016-09-08",
+    "direction":"Berlin Gesundbrunnen",
+    "track":"2",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=949491%2F324333%2F66120%2F283437%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"IC 2205",
+    "type":"IC",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"18:37",
+    "date":"2016-09-08",
+    "direction":"Koblenz Hbf",
+    "track":"3",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=224346%2F78917%2F166876%2F8656%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"EC 6",
+    "type":"EC",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"18:44",
+    "date":"2016-09-08",
+    "direction":"Hamburg-Altona",
+    "track":"1",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=39297%2F24513%2F915994%2F444898%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"IC 2213",
+    "type":"IC",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"19:14",
+    "date":"2016-09-08",
+    "direction":"Stuttgart Hbf",
+    "track":"3",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=28896%2F13838%2F807986%2F394361%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"EC 114",
+    "type":"EC",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"19:22",
+    "date":"2016-09-08",
+    "direction":"Dortmund Hbf",
+    "track":"1",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=147843%2F59211%2F872488%2F386963%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"ICE 556",
+    "type":"ICE",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"19:37",
+    "date":"2016-09-08",
+    "direction":"Koblenz Hbf",
+    "track":"3",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=942939%2F321182%2F963380%2F167377%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"ICE 26",
+    "type":"ICE",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"19:44",
+    "date":"2016-09-08",
+    "direction":"Hamburg Hbf",
+    "track":"1",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=410472%2F147556%2F672464%2F199408%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"ICE 1029",
+    "tyte":"ICE",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"20:14",
+    "date":"2016-09-08",
+    "direction":"Nürnberg Hbf",
+    "track":"3",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=598590%2F200384%2F80990%2F159035%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"IC 2318",
+    "type":"IC",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"20:44",
+    "date":"2016-09-08",
+    "direction":"Dortmund Hbf",
+    "track":"1",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=396540%2F137123%2F221600%2F21380%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"IC 2315",
+    "type":"IC",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"21:14",
+    "date":"2016-09-08",
+    "direction":"Frankfurt(Main)Hbf",
+    "track":"3",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=529275%2F181338%2F500794%2F73972%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"EN 421",
+    "type":"EN",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"21:43",
+    "date":"2016-09-08",
+    "direction":"Wien Hbf (Autoreisezuganlage)",
+    "track":"3",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=907956%2F308816%2F149932%2F227686%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"ICE 1522",
+    "tyte":"ICE",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"21:45",
+    "date":"2016-09-08",
+    "direction":"Dortmund Hbf",
+    "track":"1",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=143286%2F49799%2F740938%2F322707%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"IC 2221",
+    "type":"IC",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"22:14",
+    "date":"2016-09-08",
+    "direction":"Frankfurt(Main)Hbf",
+    "track":"3",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=879336%2F297434%2F237026%2F174599%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"IC 2210",
+    "type":"IC",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"22:44",
+    "date":"2016-09-08",
+    "direction":"Köln Hbf",
+    "track":"1",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=361716%2F124757%2F703196%2F231026%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"IC 2307",
+    "type":"IC",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"23:14",
+    "date":"2016-09-08",
+    "direction":"Koblenz Hbf",
+    "track":"3",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=774021%2F262792%2F523026%2F3506%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"CNL40419",
+    "tyte":"CNL",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"23:39",
+    "date":"2016-09-08",
+    "direction":"Zürich HB",
+    "track":"3",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=675249%2F225175%2F483358%2F16596%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"IC 60419",
+    "tyoe":"IC",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"23:39",
+    "date":"2016-09-08",
+    "direction":"München Hbf",
+    "track":"3",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=382023%2F127645%2F295410%2F20364%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"IC 61419",
+    "tyoe":"IC",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"23:39",
+    "date":"2016-09-08",
+    "direction":"Zürich HB",
+    "track":"3",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=473610%2F158415%2F951164%2F317712%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    },{
+    "name":"CNL 419",
+    "type":"CNL",
+    "stopid":"8000044",
+    "stop":"Bonn Hbf",
+    "time":"23:39",
+    "date":"2016-09-08",
+    "direction":"München Hbf",
+    "track":"3",
+    "JourneyDetailRef":{
+      "ref":"https://open-api.bahn.de/bin/rest.exe/v1.0/journeyDetail?ref=352812%2F123743%2F672358%2F218575%2F80%3Fdate%3D2016-09-08%26station_evaId%3D8000044%26station_type%3Ddep%26authKey%3DDBhackFrankfurt0316%26lang%3Den%26format%3Djson%26"
+      }
+    }]
+  }
+}

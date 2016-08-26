@@ -1,0 +1,46 @@
+{
+"LocationList":{
+  "noNamespaceSchemaLocation":"https://open-api.bahn.de/bin/rest.exe/v1.0/xsd?name=hafasRestLocation.xsd",
+  "StopLocation":[{
+    "name":"Bonn Hbf",
+    "lon":"7.097136",
+    "lat":"50.732007",
+    "id":"008000044"
+    },{
+    "name":"Bonn/Köln Flughafen",
+    "lon":"7.119303",
+    "lat":"50.878900",
+    "id":"008003330"
+    },{
+    "name":"Siegburg/Bonn",
+    "lon":"7.203029",
+    "lat":"50.793916",
+    "id":"008005556"
+    },{
+    "name":"Bonn-Beuel",
+    "lon":"7.127654",
+    "lat":"50.738479",
+    "id":"008001083"
+    },{
+    "name":"Ratisbonne",
+    "lon":"12.099615",
+    "lat":"49.011669",
+    "id":"008000309"
+    },{
+    "name":"Boncourt",
+    "lon":"7.016763",
+    "lat":"47.493212",
+    "id":"008500128"
+    },{
+    "name":"Bonstetten-Wettswil",
+    "lon":"8.468081",
+    "lat":"47.326345",
+    "id":"008502222"
+    },{
+    "name":"Bretonnieres",
+    "lon":"6.474723",
+    "lat":"46.715060",
+    "id":"008501105"
+    }]
+  }
+}
