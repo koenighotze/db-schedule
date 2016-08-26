@@ -56,5 +56,4 @@ defmodule Dbparser.Departure do
   defp extract_fields(departure) do
     Map.take(departure, ~w(time date direction name JourneyDetailRef stop))
   end
-
 end

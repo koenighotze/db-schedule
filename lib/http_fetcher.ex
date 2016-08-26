@@ -1,8 +1,7 @@
 defmodule Dbparser.HttpFetcher do
   import Logger
 
-  # @api_key System.get_env("DB_API_KEY")
-  @api_key "DBhackFrankfurt0316"
+  @api_key System.get_env("DB_API_KEY")
 
   @user_agent [ { "User-agent", "Elixir foo@bar.com" }]
   @http_ok 200

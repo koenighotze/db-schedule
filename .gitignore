@@ -1,0 +1,11 @@
+/_build
+/cover
+/deps
+erl_crash.dump
+*.ez
+.DS_Store
+mix.lock
+*beam
+_build
+_build/
+cover/
