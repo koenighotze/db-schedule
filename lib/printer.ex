@@ -2,8 +2,6 @@ defmodule Dbparser.Printer do
   import IO.ANSI
 
   def print_board(%{"departures" => departures, "station" => %{"name" => station_name}}) do
-    # break = blue() <> String.duplicate("-", String.length("Departure Board for Station #{station_name}"))
-    # IO.puts(break)
     IO.puts(underline() <> white() <> "Departure Board for Station " <> yellow() <> "#{station_name}" <> default_color() <> no_underline())
     print_departures(departures)
   end
