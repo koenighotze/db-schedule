@@ -8,4 +8,8 @@ defmodule Testdata do
   def departure_data do
     File.read! "test/data/departure.json" |> String.replace("\n", " ")
   end
+
+  def journey_details_data do
+    File.read! "test/data/journey_details.json" |> String.replace("\n", " ")
+  end
 end

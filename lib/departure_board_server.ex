@@ -1,7 +1,7 @@
 defmodule Dbparser.DepartureBoardServer do
   use GenServer
   import Logger
-  alias Dbparser.Departure
+  alias Dbparser.{Departure, Location}
 
   @name {:global, __MODULE__}
 
@@ -10,28 +10,30 @@ defmodule Dbparser.DepartureBoardServer do
     GenServer.start_link(__MODULE__, [], name: @name, debug: [:trace, :statistics] )
   end
 
-  def fetch_departure_board(station_id, date, time) do
-    GenServer.call @name, {:departure_board, %{"station_id" => station_id, "date" => date, "time" => time}}
+  def fetch_departure_board(station_name, date, time) do
+    GenServer.call @name, {:departure_board, %{"station_name" => station_name, "date" => date, "time" => time}}
   end
 
-  def fetch_departure_board_async(station_id, date, time) do
-    GenServer.call @name, {:departure_board, %{"station_id" => station_id, "date" => date, "time" => time, "reply_to" => self}}
+  def fetch_departure_board_async(station_name, date, time) do
+    GenServer.call @name, {:departure_board, %{"station_name" => station_name, "date" => date, "time" => time, "reply_to" => self}}
   end
 
   ###########################
 
-  def handle_call({:departure_board, %{"station_id" => station_id, "date" => date, "time" => time}} = message, _from, state) do
+  def handle_call({:departure_board, %{"station_name" => station_name, "date" => date, "time" => time}} = message, _from, state) do
     {:departure_board, payload} = message
 
     case Map.get(payload, "reply_to") do
-      nil -> {:reply, %{"station" => %{"name" => "station_name"},
-                        "departures" => Departure.fetch_departure_board(station_id, date, time)}, state}
+      nil -> res = Location.fetch_station_data(station_name)
+                   |> Dbparser.fetch_departure_boards(date, time)
+            {:reply, res, state}
       sender ->
         %Task{:pid => pid} = Task.async(
           fn ->
-            %{"station" => %{"name" => "station_name"},
-              "departures" => Departure.fetch_departure_board(station_id, date, time)}
+            Location.fetch_station_data(station_name)
+            |> Dbparser.fetch_departure_boards(date, time)
             |> Dbparser.PrinterServer.print_board
+
             debug("Finished")
           end
         )

@@ -21,11 +21,22 @@ defmodule Dbparser do
       |> fetch_board("#{year}-#{month}-#{day}", "#{hour}:#{second}")
   end
 
-  def fetch_board_message(stationname, date, time) do
-  end
-
   def fetch_board(stationname, date, time) do
     Location.fetch_station_data(stationname)
+    |> fetch_departure_boards(date, time)
+    |> print_results
+  end
+
+  def print_results([]) do
+    Printer.print_empty_board
+  end
+
+  def print_results(results) do
+    results |> Enum.each(&Printer.print_board/1)
+  end
+
+  def fetch_departure_boards(station_data, date, time) do
+    station_data
     |> Enum.map(
        fn %Station{id: station_id} = station_data ->
          Task.async(
@@ -36,7 +47,5 @@ defmodule Dbparser do
          )
        end)
     |> Enum.map(&Task.await/1)
-    |> Enum.each(&Printer.print_board/1)
   end
-
-  end
+end

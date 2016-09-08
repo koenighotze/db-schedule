@@ -1,5 +1,5 @@
 defmodule Dbparser.Departure do
-  alias Dbparser.{HttpFetcher, JourneyDetail, DepartureBoard}
+  alias Dbparser.{HttpFetcher, JourneyDetail, DepartureBoard, JourneyDetails}
   import Logger
 
   @departure_service_url "https://open-api.bahn.de/bin/rest.exe/departureBoard?format=json&lang=en&authKey=<AUTH_KEY>&id=<STATION_ID>&date=<DATE>&time=<TIME>"
@@ -18,7 +18,7 @@ defmodule Dbparser.Departure do
   end
 
   def parse_response({:error, reason}) do
-    raise "FIX ME"
+    raise "FIX ME #{inspect reason}"
   end
 
   def extract_departures(departures, journey_detail_resolver \\ &JourneyDetail.fetch_journey_detail/2)
@@ -26,19 +26,26 @@ defmodule Dbparser.Departure do
   def extract_departures(departures, journey_detail_resolver) when is_list(departures) do
     departures
       |> Enum.take(5)
-      |> Enum.map(fn %DepartureBoard{stop: stop, JourneyDetailRef: %{"ref" => url}} = dep ->
-        Map.merge(dep, journey_detail_resolver.(url, stop))
-      end)
+      |> Enum.map(&( resolve_journey_details(&1, journey_detail_resolver) ))
   end
 
   # todo Errorcase cleanup
   def extract_departures(%{"DepartureBoard" => %{"errorCode" => code, "errorText" => text}}, _journey_detail_resolver) do
     warn("#{code} #{text}")
-    #%{}
-    raise
+    raise "Fix me #{code}"
   end
 
-  def extract_departures(departure, _journey_detail_resolver) do
-      extract_fields(departure)
+  def extract_departures(departure, journey_detail_resolver) do
+    departure
+    |> resolve_journey_details(journey_detail_resolver)
   end
+
+  def resolve_journey_details(nil, _journey_detail_resolver) do
+    %DepartureBoard{}
+  end
+
+  def resolve_journey_details(%DepartureBoard{stop: stop, JourneyDetailRef: %{"ref" => url}} = departure_board, journey_detail_resolver) do
+      %DepartureBoard{departure_board | JourneyDetailRef: journey_detail_resolver.(url, stop)}
+  end
+
 end
