@@ -1,7 +1,7 @@
 defmodule Dbparser.DepartureBoardServer do
   use GenServer
   import Logger
-  alias Dbparser.{Departure, Location}
+  alias Dbparser.Location
 
   @name {:global, __MODULE__}
 
@@ -10,7 +10,7 @@ defmodule Dbparser.DepartureBoardServer do
     GenServer.start_link(__MODULE__, [], name: @name)#, debug: [:trace] )
   end
 
-  def fetch_departure_board(station_name, date, time) do
+  def fetch_departure_board(station_name, date \\ "", time \\ "") do
     GenServer.call @name, {:departure_board, %{"station_name" => station_name, "date" => date, "time" => time}}
   end
 
@@ -25,7 +25,7 @@ defmodule Dbparser.DepartureBoardServer do
       nil -> res = Location.fetch_station_data(station_name)
                    |> Dbparser.fetch_departure_boards(date, time)
             {:reply, res, state}
-      sender ->
+      _sender ->
         %Task{:pid => pid} = Task.async(
           fn ->
             Location.fetch_station_data(station_name)
@@ -33,6 +33,7 @@ defmodule Dbparser.DepartureBoardServer do
             |> Enum.each(fn board -> Dbparser.PrinterServer.print_board(board) end)
           end
         )
+
         {:reply, {:accepted, %{"pid" => pid}}, state}
     end
   end
