@@ -18,8 +18,6 @@ defmodule Dbparser.DepartureBoardServer do
     GenServer.call @name, {:departure_board, %{"station_name" => station_name, "date" => date, "time" => time, "reply_to" => self}}
   end
 
-  ###########################
-
   def handle_call({:departure_board, %{"station_name" => station_name, "date" => date, "time" => time}} = message, _from, state) do
     {:departure_board, payload} = message
 

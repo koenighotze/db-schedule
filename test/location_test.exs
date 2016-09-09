@@ -1,5 +1,5 @@
 defmodule Dbparser.LocationTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   alias Dbparser.Location
   alias Dbparser.Station
 

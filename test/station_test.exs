@@ -1,5 +1,5 @@
 defmodule Dbparser.StationTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   alias Dbparser.Station
 
