@@ -7,9 +7,8 @@ defmodule Dbparser.PrinterServer do
 
   def start_link do
     info("Starting #{inspect @name}")
-    GenServer.start_link(__MODULE__, [], name: @name, debug: [:trace])
+    GenServer.start_link(__MODULE__, [], name: @name)#, debug: [:trace])
   end
-
 
   def print_board(departure_info) do
     GenServer.cast(@name, {:print_departure_board, %{"info" => departure_info}})

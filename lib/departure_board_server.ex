@@ -7,7 +7,7 @@ defmodule Dbparser.DepartureBoardServer do
 
   def start_link do
     info("Starting #{inspect @name}")
-    GenServer.start_link(__MODULE__, [], name: @name, debug: [:trace, :statistics] )
+    GenServer.start_link(__MODULE__, [], name: @name)#, debug: [:trace] )
   end
 
   def fetch_departure_board(station_name, date, time) do
@@ -30,9 +30,7 @@ defmodule Dbparser.DepartureBoardServer do
           fn ->
             Location.fetch_station_data(station_name)
             |> Dbparser.fetch_departure_boards(date, time)
-            |> Dbparser.PrinterServer.print_board
-
-            debug("Finished")
+            |> Enum.each(fn board -> Dbparser.PrinterServer.print_board(board) end)
           end
         )
         {:reply, {:accepted, %{"pid" => pid}}, state}
