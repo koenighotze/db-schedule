@@ -21,7 +21,7 @@ defmodule Dbparser do
       |> fetch_board("#{year}-#{month}-#{day}", "#{hour}:#{second}")
   end
 
-  def fetch_board(stationname, date, time) do
+  def fetch_board(stationname, date \\ "", time \\ "") do
     Location.fetch_station_data(stationname)
     |> fetch_departure_boards(date, time)
     |> print_results

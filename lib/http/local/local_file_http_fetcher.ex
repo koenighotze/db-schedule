@@ -1,11 +1,12 @@
 defmodule Dbparser.LocalFileHttpFetcher do
   import Logger
 
-  @location_service_url "https://open-api.bahn.de/bin/rest.exe/location.name?format=json&lang=en&input=<LOCATION>&authKey=<AUTH_KEY>"
-  @departure_service_url "https://open-api.bahn.de/bin/rest.exe/departureBoard?format=json&lang=en&authKey=<AUTH_KEY>&id=<STATION_ID>&date=<DATE>&time=<TIME>"
+  @behaviour Dbparser.Http
+  @location_service_url Application.get_env(:dbparser, :location_service_url)
+  @departure_service_url Application.get_env(:dbparser, :departure_service_url)
 
   def get(url, _params) do
-    info("Loading #{url} in mock mode")
+    debug("Loading #{url} in mock mode")
 
     content = case url do
       @location_service_url -> location_data
