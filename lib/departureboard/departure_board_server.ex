@@ -23,13 +23,13 @@ defmodule Dbparser.DepartureBoardServer do
 
     case Map.get(payload, "reply_to") do
       nil -> res = Location.fetch_station_data(station_name)
-                   |> Dbparser.fetch_departure_boards(date, time)
+                   |> DbparserOrg.fetch_departure_boards(date, time)
             {:reply, res, state}
       _sender ->
         %Task{:pid => pid} = Task.async(
           fn ->
             Location.fetch_station_data(station_name)
-            |> Dbparser.fetch_departure_boards(date, time)
+            |> DbparserOrg.fetch_departure_boards(date, time)
             |> Enum.each(fn board -> Dbparser.PrinterServer.print_board(board) end)
           end
         )

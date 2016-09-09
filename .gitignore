@@ -9,3 +9,5 @@ mix.lock
 _build
 _build/
 cover/
+priv
+node_modules/
