@@ -20,7 +20,10 @@ defmodule DepartureBoardUi.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", DepartureBoardUi do
-  #   pipe_through :api
-  # end
+  scope "/api", DepartureBoardUi do
+    pipe_through :api
+
+    resources "/stations", StationController, except: [:new, :edit ] #, :delete, :create]
+    get "/departureboard/:station_name/:departure_date/:departure_time", DepartureBoardController, except: [:new, :edit, :delete, :create]
+  end
 end
