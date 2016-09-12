@@ -18,6 +18,11 @@ defmodule Dbparser.Location do
     |> Poison.decode!(as: %{"LocationList" => %{"StopLocation" => [%Station{}]}}) |> get_in(["LocationList", "StopLocation"])
   end
 
+  def parse_response({:error, reason}) do
+    warn("Cannot parse location data due to #{reason}")
+    []
+  end
+
   def filter_stations(stations, stationname) do
     {:ok, reg} = Regex.compile("^" <> Regex.escape(stationname))
 

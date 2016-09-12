@@ -1,4 +1,5 @@
 defmodule Dbparser.JourneyDetail do
+  import Logger
   alias Dbparser.JourneyDetails
 
   @http_fetcher_module Application.get_env(:dbparser, :http_fetcher_module)
@@ -13,6 +14,15 @@ defmodule Dbparser.JourneyDetail do
     data
     |> Poison.decode!(as: %{"JourneyDetail" => %{"Stops" => %{ "Stop" => [%JourneyDetails{}]}}})
     |> get_in(~w(JourneyDetail Stops Stop))
+  end
+
+  def parse_response({:error, reason}) do
+    warn("Cannot fetch Journey Details due to #{reason}")
+    []
+  end
+
+  def extract_stops(nil, _start_station_name) do
+    []
   end
 
   def extract_stops(stops, start_station_name) do

@@ -11,7 +11,9 @@ defmodule Dbparser.DepartureBoardServer do
   end
 
   def fetch_departure_board(station_name, date \\ "", time \\ "") do
-    GenServer.call @name, {:departure_board, %{"station_name" => station_name, "date" => date, "time" => time}}
+    GenServer.call @name,
+                   {:departure_board, %{"station_name" => station_name, "date" => date, "time" => time}},
+                   5000
   end
 
   def fetch_departure_board_async(station_name, date, time) do

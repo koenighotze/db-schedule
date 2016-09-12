@@ -20,7 +20,8 @@ defmodule Dbparser.Departure do
   end
 
   def parse_response({:error, reason}) do
-    raise "FIX ME #{inspect reason}"
+    warn("Cannot fetch departure boards due to #{reason}")
+    []
   end
 
   def extract_departures(departures, journey_detail_resolver \\ &JourneyDetail.fetch_journey_detail/2)
@@ -34,7 +35,7 @@ defmodule Dbparser.Departure do
   # todo Errorcase cleanup
   def extract_departures(%{"DepartureBoard" => %{"errorCode" => code, "errorText" => text}}, _journey_detail_resolver) do
     warn("#{code} #{text}")
-    raise "Fix me #{code}"
+    []
   end
 
   def extract_departures(departure, journey_detail_resolver) do

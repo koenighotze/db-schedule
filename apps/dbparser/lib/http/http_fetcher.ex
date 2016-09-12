@@ -6,7 +6,7 @@ defmodule Dbparser.HttpFetcher do
   @api_key System.get_env("DB_API_KEY")
   @user_agent [ { "User-agent", "Elixir foo@bar.com" }]
   @http_ok 200
-  @timeout_millis 5000
+  @timeout_millis 2000
 
   def get(url, params) do
     url =
@@ -16,7 +16,7 @@ defmodule Dbparser.HttpFetcher do
     debug("GET #{url}")
 
     url
-      |> HTTPoison.get(@user_agent, [timeout: @timeout_millis])
+      |> HTTPoison.get(@user_agent, timeout: @timeout_millis)
       |> handle_response
   end
 
