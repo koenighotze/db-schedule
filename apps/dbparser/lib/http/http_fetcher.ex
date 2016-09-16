@@ -3,7 +3,7 @@ defmodule Dbparser.HttpFetcher do
 
   @behaviour Dbparser.Http
 
-  @api_key System.get_env("DB_API_KEY")
+  @api_key System.get_env("DB_API_KEY") || "TMP"
   @user_agent [ { "User-agent", "Elixir foo@bar.com" }]
   @http_ok 200
   @timeout_millis 2000

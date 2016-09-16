@@ -7,7 +7,7 @@ defmodule Dbparser.DepartureBoardServer do
 
   def start_link do
     info("Starting #{inspect @name}")
-    GenServer.start_link(__MODULE__, [], name: @name)#, debug: [:trace] )
+    GenServer.start_link(__MODULE__, [], name: @name )#, debug: [:trace] )
   end
 
   def fetch_departure_board(station_name, date \\ "", time \\ "") do
@@ -16,8 +16,8 @@ defmodule Dbparser.DepartureBoardServer do
                    5000
   end
 
-  def fetch_departure_board_async(station_name, date, time) do
-    GenServer.call @name, {:departure_board, %{"station_name" => station_name, "date" => date, "time" => time, "reply_to" => self}}
+  def fetch_departure_board_async(station_name, date, time, reply_to) do
+    GenServer.call @name, {:departure_board, %{"station_name" => station_name, "date" => date, "time" => time, "reply_to" => reply_to}}
   end
 
   def handle_call({:departure_board, %{"station_name" => station_name, "date" => date, "time" => time}} = message, _from, state) do
@@ -27,16 +27,32 @@ defmodule Dbparser.DepartureBoardServer do
       nil -> res = Location.fetch_station_data(station_name)
                    |> Dbparser.fetch_departure_boards(date, time)
             {:reply, res, state}
-      _sender ->
+      reply_to ->
+        token = :os.system_time
+
         %Task{:pid => pid} = Task.async(
           fn ->
-            Location.fetch_station_data(station_name)
-            |> Dbparser.fetch_departure_boards(date, time)
-            |> Enum.each(fn board -> Dbparser.PrinterServer.print_board(board) end)
+            res =
+              Location.fetch_station_data(station_name)
+              |> Dbparser.fetch_departure_boards(date, time)
+
+            res
+            |> send_reply(reply_to, token)
+
+            # |> Enum.each(fn board -> Dbparser.PrinterServer.print_board(board) end)
           end
         )
 
-        {:reply, {:accepted, %{"pid" => pid}}, state}
+        {:reply, {:accepted, %{"pid" => pid, "token" => token}}, state}
     end
+  end
+
+  def send_reply([], reply_to, token) do
+    GenServer.cast(reply_to, {:departure_board, %{"token" => token, "board" => [:EMPTY]}})
+  end
+
+  def send_reply(board_data, reply_to, token) do
+    board_data
+    |> Enum.each(fn board -> GenServer.cast(reply_to, {:departure_board, %{"token" => token, "board" => board}}) end)
   end
 end

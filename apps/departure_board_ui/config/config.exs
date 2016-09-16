@@ -29,4 +29,5 @@ config :phoenix, :generators,
   binary_id: false
 
 
-config :dbparser, http_fetcher_module: Dbparser.HttpFetcher
+# config :dbparser, http_fetcher_module: Dbparser.HttpFetcher
+#config :dbparser, http_fetcher_module: Dbparser.LocalFileHttpFetcher
