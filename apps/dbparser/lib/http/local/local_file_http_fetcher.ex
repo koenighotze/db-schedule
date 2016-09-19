@@ -4,6 +4,7 @@ defmodule Dbparser.LocalFileHttpFetcher do
   @behaviour Dbparser.Http
   @location_service_url Application.get_env(:dbparser, :location_service_url)
   @departure_service_url Application.get_env(:dbparser, :departure_service_url)
+  @data_location_dir Application.get_env(:dbparser, :http_fetcher_data_location_dir) || "test/data/"
 
   def get(url, _params) do
     debug("Loading #{url} in mock mode")
@@ -18,14 +19,14 @@ defmodule Dbparser.LocalFileHttpFetcher do
   end
 
   def location_data do
-    File.read! "test/data/location.json" |> String.replace("\n", " ")
+    File.read! "#{@data_location_dir}/location.json" |> String.replace("\n", " ")
   end
 
   def departure_data do
-    File.read! "test/data/departure.json" |> String.replace("\n", " ")
+    File.read! "#{@data_location_dir}/departure.json" |> String.replace("\n", " ")
   end
 
   def journey_details_data do
-    File.read! "test/data/journey_details.json" |> String.replace("\n", " ")
+    File.read! "#{@data_location_dir}/journey_details.json" |> String.replace("\n", " ")
   end
 end

@@ -32,11 +32,8 @@ defmodule Dbparser.DepartureBoardServer do
 
         %Task{:pid => pid} = Task.async(
           fn ->
-            res =
-              Location.fetch_station_data(station_name)
-              |> Dbparser.fetch_departure_boards(date, time)
-
-            res
+            Location.fetch_station_data(station_name)
+            |> Dbparser.fetch_departure_boards(date, time)
             |> send_reply(reply_to, token)
 
             # |> Enum.each(fn board -> Dbparser.PrinterServer.print_board(board) end)

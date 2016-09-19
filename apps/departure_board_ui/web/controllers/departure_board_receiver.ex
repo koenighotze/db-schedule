@@ -14,5 +14,4 @@ defmodule DepartureBoardUi.DepartureBoardReceiver do
     info("Received departure board for token #{token}")
     {:noreply, state}
   end
-
 end

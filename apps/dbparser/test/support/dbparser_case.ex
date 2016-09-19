@@ -4,7 +4,7 @@ defmodule Dbparser.Case do
 
   using do
     quote do
-      use ExUnit.Case, async: true
+      use ExUnit.Case, async: false
       import ExUnit.CaptureIO
       alias Dbparser.{Printer, JourneyDetails, Station, DepartureBoard}
     end

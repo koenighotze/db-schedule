@@ -3,9 +3,11 @@ defmodule Dbparser.PrinterServerTest do
   alias Dbparser.PrinterServer
 
   test "printer server prints the departure board to stdout", %{departure_board: board} do
-    out = capture_io(fn ->
+    _out = capture_io(fn ->
       PrinterServer.print_board(board)
     end)
+
+    # assert out != ""
   end
 
 end

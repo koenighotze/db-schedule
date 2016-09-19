@@ -7,6 +7,7 @@ defmodule DepartureBoardUi.StationController do
 
   def index(conn, _params) do
     stations = Repo.all(Station)
+
     render(conn, "index.json", stations: stations)
   end
 

@@ -27,7 +27,3 @@ import_config "#{Mix.env}.exs"
 config :phoenix, :generators,
   migration: true,
   binary_id: false
-
-
-# config :dbparser, http_fetcher_module: Dbparser.HttpFetcher
-#config :dbparser, http_fetcher_module: Dbparser.LocalFileHttpFetcher
