@@ -16,7 +16,7 @@ defmodule DepartureBoardUi.DepartureBoard do
 
 
   def by_token(token) do
-    from b in DepartureBoardUi.DepartureBoard, where: b.token == ^token
+    from b in DepartureBoardUi.DepartureBoard, where: b.token == ^"#{token}"
   end
 
   @doc """

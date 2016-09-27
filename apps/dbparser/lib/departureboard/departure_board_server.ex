@@ -34,7 +34,7 @@ defmodule Dbparser.DepartureBoardServer do
           fn ->
             Location.fetch_station_data(station_name)
             |> Dbparser.fetch_departure_boards(date, time)
-            |> send_reply(reply_to, token)
+            |> send_reply(reply_to, "#{token}")
 
             # |> Enum.each(fn board -> Dbparser.PrinterServer.print_board(board) end)
           end

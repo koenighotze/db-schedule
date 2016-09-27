@@ -5,9 +5,9 @@ defmodule DepartureBoardUi.DepartureBoardController do
   alias DepartureBoardUi.{DepartureBoard}
 
   def fetch(conn, %{"token" => token}) do
-    board = Repo.one!(DepartureBoard.by_token(token))
+    boards = Repo.all(DepartureBoard.by_token(token))
 
-    render(conn, departure_board: board)
+    render(conn, departure_boards: boards)
     # case Repo.one(DepartureBoard.by_token(token)) do
     #   nil -> conn
     #   |> render(%{"departure_board" => "not_found"})
@@ -24,18 +24,6 @@ defmodule DepartureBoardUi.DepartureBoardController do
     # TODO: how to protect against timeouts?
     {:accepted, %{"pid" => pid, "token" => token}} = DepartureBoardServer.fetch_departure_board_async(station_name, departure_date, departure_time, {:global, DepartureBoardUi.DepartureBoardReceiver})
 
-    DepartureBoard.changeset(
-        %DepartureBoardUi.DepartureBoard{},
-        %{
-          token: "#{token}",
-          station_name: station_name,
-          time: "",
-          date: "",
-          direction: ""
-        })
-    |> Repo.insert!
-
-    # todo return url
     render(conn, board_url: DepartureBoardUi.Router.Helpers.departure_board_url(DepartureBoardUi.Endpoint, :fetch, token))
   end
 end
