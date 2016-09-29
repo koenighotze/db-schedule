@@ -8,16 +8,6 @@ defmodule DepartureBoardUi.DepartureBoardController do
     boards = Repo.all(DepartureBoard.by_token(token))
 
     render(conn, departure_boards: boards)
-    # case Repo.one(DepartureBoard.by_token(token)) do
-    #   nil -> conn
-    #   |> render(%{"departure_board" => "not_found"})
-    #         # conn
-    #         # |> put_status(:not_found)
-    #         # |> render(DepartureBoardUi.ErrorView, "404.json")
-    #   board ->
-    #         conn
-    #         |> render(%{"departure_board" => board})
-    # end
   end
 
   def show(conn, %{"station_name" => station_name, "departure_date" => departure_date, "departure_time" => departure_time}) do
