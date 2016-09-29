@@ -3,7 +3,6 @@ defmodule DepartureBoardUi.PageController do
   @timezone "Europe/Berlin"
 
   def index(conn, _params) do
-
     %{:year => year, :month => month, :day => day, :hour => hour, :second => second}
       = Timex.now(@timezone)
       |> Map.take([:year, :month, :day, :hour, :second])
