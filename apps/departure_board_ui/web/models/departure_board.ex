@@ -12,7 +12,7 @@ defmodule DepartureBoardUi.DepartureBoard do
   end
 
   @required_fields ~w(token station_name time date direction)
-  @optional_fields ~w()
+  @optional_fields ~w(time date direction)
 
 
   def by_token(token) do

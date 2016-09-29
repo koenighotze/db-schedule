@@ -26,9 +26,14 @@ defmodule DepartureBoardUi.ModelCase do
   end
 
   setup tags do
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(DepartureBoardUi.Repo)
+
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(DepartureBoardUi.Repo, [])
+      Ecto.Adapters.SQL.Sandbox.mode(DepartureBoardUi.Repo, {:shared, self()})
     end
+    # unless tags[:async] do
+    #   Ecto.Adapters.SQL.restart_test_transaction(DepartureBoardUi.Repo, [])
+    # end
 
     :ok
   end

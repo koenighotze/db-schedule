@@ -7,7 +7,6 @@ config :departure_board_ui, DepartureBoardUi.Endpoint,
   cache_static_manifest: "priv/static/manifest.json",
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
-
 config :departure_board_ui, DepartureBoardUi.Repo,
     adapter: Ecto.Adapters.Postgres,
     url: System.get_env("DATABASE_URL"),

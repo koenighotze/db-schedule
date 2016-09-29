@@ -3,15 +3,18 @@ defmodule Dbparser.HttpFetcher do
 
   @behaviour Dbparser.Http
 
-  @api_key System.get_env("DB_API_KEY") || "TMP"
+  #@api_key System.get_env("DB_API_KEY") || "TMP"
+  #@api_key Application.get_env(:dbparser, :api_key)
   @user_agent [ { "User-agent", "Elixir foo@bar.com" }]
   @http_ok 200
   @timeout_millis 2000
 
   def get(url, params) do
+    api_key = System.get_env("DB_API_KEY") || raise "DB_API_KEY is not set!"
+
     url =
       url
-      |> replace_url_params(Map.put(params, "<AUTH_KEY>", @api_key))
+      |> replace_url_params(Map.put(params, "<AUTH_KEY>", api_key))
 
     debug("GET #{url}")
 
