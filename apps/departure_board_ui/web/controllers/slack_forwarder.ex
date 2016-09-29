@@ -71,7 +71,7 @@ defmodule DepartureBoardUi.SlackForwarder do
                       ]},
                       %{"Content-type" => "application/json"}) do
 
-        {:ok, response} -> :ok
+        {:ok, response} -> info("Successfully forwarded. #{inspect response}")
         {:error, reason} -> warn(reason)
       end
   end
