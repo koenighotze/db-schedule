@@ -68,9 +68,11 @@ defmodule DepartureBoardUi.SlackForwarder do
        text: "Train #{name} leaves from #{station_name} with destination #{direction} at #{time}"
      }
 
+     data = Poison.encode!(payload)
+     info("Sending #{data}")
       case HTTPoison.post(url,
-                    Poison.encode!(payload),
-                      %{"Content-type" => "application/json"}) do
+                    data,
+                      %{"content-type" => "application/json"}) do
 
         {:ok, response} -> info("Successfully forwarded. #{inspect response}")
         {:error, reason} -> warn(reason)
