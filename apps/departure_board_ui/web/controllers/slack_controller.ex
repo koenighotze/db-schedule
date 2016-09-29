@@ -22,10 +22,17 @@ defmodule DepartureBoardUi.SlackController do
       "text" => text,
       "response_url" => response_url
     }) do
+    captures = ~r/^[Ff]rom (?<station>.*) departure (?<departure_time>(\d?\d:\d\d)|now)/
+      |> Regex.named_captures(text)
 
+    handle_request(conn, response_url, captures)
+  end
+
+  def handle_request(conn, response_url, nil), do: render(conn, token: "Invalid request. Use From stations_name departure 19:01")
+
+  def handle_request(conn, response_url, captures) do
     %{"departure_time" => departure_time, "station" => station_name} =
-        ~r/^[Ff]rom (?<station>.*) departure (?<departure_time>(\d\d:\d\d)|now)/
-        |> Regex.named_captures(text)
+        captures
         |> Map.take(~W(departure_time station))
 
     departure_time = departure_time |> purge_time
@@ -36,7 +43,6 @@ defmodule DepartureBoardUi.SlackController do
 
     render(conn, token: "Got it...searching...")
   end
-
   def fetch(conn, params) do
     render(conn, token: params)
   end
