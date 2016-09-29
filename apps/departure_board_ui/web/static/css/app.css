@@ -10,6 +10,11 @@ body, form, ul, table {
   margin-bottom: 20px;
 }
 
+
+div#board-container {
+  overflow: scroll;
+  max-height: 10em;
+}
 /* Phoenix flash messages */
 .alert:empty { display: none; }
 

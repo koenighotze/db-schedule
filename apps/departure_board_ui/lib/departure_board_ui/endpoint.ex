@@ -1,7 +1,7 @@
 defmodule DepartureBoardUi.Endpoint do
   use Phoenix.Endpoint, otp_app: :departure_board_ui
 
-  socket "/socket", DepartureBoardUi.UserSocket
+  socket "/socket", DepartureBoardUi.DepartureBoardSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #

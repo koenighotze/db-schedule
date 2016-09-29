@@ -13,7 +13,8 @@ defmodule DepartureBoardUi do
       supervisor(DepartureBoardUi.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(DepartureBoardUi.Worker, [arg1, arg2, arg3]),
-      worker(DepartureBoardUi.DepartureBoardReceiver, [])
+      worker(DepartureBoardUi.DepartureBoardReceiver, []),
+      worker(DepartureBoardUi.Broadcaster, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
