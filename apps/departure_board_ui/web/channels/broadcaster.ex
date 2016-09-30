@@ -1,6 +1,5 @@
 defmodule DepartureBoardUi.Broadcaster do
   use GenServer
-  import Logger
 
   @name  __MODULE__
 

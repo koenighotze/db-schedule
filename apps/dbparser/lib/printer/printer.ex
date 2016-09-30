@@ -27,13 +27,13 @@ defmodule Dbparser.Printer do
   end
 
   def print_departure(%DepartureBoard{date: date, direction: direction, name: name, time: time, JourneyDetailRef: stops}) do
-    IO.puts(green() <> "#{date} #{time}" <> default_color() <> ": " <> yellow() <> "#{name}" <> default_color() <> " leaves in the direction "<> yellow() <> "#{direction} "<> white() <> "via")
+    IO.puts(green() <> "#{date} #{time}" <> default_color() <> ": " <> yellow() <> "#{name}" <> default_color() <> " leaves in the direction " <> yellow() <> "#{direction} " <> white() <> "via")
     stops
     |> Enum.each(fn %JourneyDetails{name: station} = detail ->
       arrTime = detail.arrTime || "-----"
       track = detail.track || "n/a"
 
-      IO.puts("\t"<> green() <>  "#{arrTime} " <> yellow() <> "#{station} " <> default_color() <> " on track " <> blue() <> "#{track}")
+      IO.puts("\t" <> green() <>  "#{arrTime} " <> yellow() <> "#{station} " <> default_color() <> " on track " <> blue() <> "#{track}")
     end)
   end
 

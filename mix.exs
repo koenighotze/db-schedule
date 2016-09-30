@@ -9,6 +9,6 @@ defmodule DepartureBoard.Mixfile do
   end
 
   defp deps do
-    []
+    [{:credo, "~> 0.4", only: [:dev, :test]}]
   end
 end

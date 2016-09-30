@@ -30,7 +30,6 @@ defmodule DepartureBoardUi.Router do
   scope "/api", DepartureBoardUi do
     pipe_through :api
 
-    resources "/stations", StationController, except: [:new, :edit ] #, :delete, :create]
     get "/departureboard/:token", DepartureBoardController, :fetch
     get "/departureboard/:station_name/:departure_date/:departure_time", DepartureBoardController, :show
   end

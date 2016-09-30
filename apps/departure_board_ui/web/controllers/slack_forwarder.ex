@@ -4,7 +4,6 @@ defmodule DepartureBoardUi.SlackForwarder do
   """
   use GenServer
   import Logger
-  alias DepartureBoardUi.{Repo, DepartureBoardChannel}
 
   @name __MODULE__
 
@@ -25,7 +24,7 @@ defmodule DepartureBoardUi.SlackForwarder do
   def handle_cast({:departure_board, %{"token" => token, "board" => %{"departures" => departures, "station" => %Dbparser.Station{name: station_name}}}}, state) do
     info("Received departure board for token #{token}")
 
-    %{response_url: response_url, created: created_millis} = Map.get(state, token)
+    %{response_url: response_url} = Map.get(state, token)
     forward_departures(token, response_url, station_name, departures)
 
     {:noreply, remove_old_listeners(state, token)}
@@ -48,7 +47,7 @@ defmodule DepartureBoardUi.SlackForwarder do
       end)
   end
 
-  def forward_departures(token, url, station_name, %Dbparser.DepartureBoard{
+  def forward_departures(_token, _url, station_name, %Dbparser.DepartureBoard{
                        date: nil,
                        direction: nil,
                        name: nil,
@@ -57,11 +56,11 @@ defmodule DepartureBoardUi.SlackForwarder do
    end
 
 
-  def forward_departures(token, url, station_name, %Dbparser.DepartureBoard{
-                       date: date,
+  def forward_departures(_token, url, station_name, %Dbparser.DepartureBoard{
+                       date: _date,
                        direction: direction,
                        name: name,
-                       time: time} = board) do
+                       time: time}) do
     info("Forwarding to #{url}")
 
     payload = %{
