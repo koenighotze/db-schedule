@@ -22,15 +22,20 @@ Then, as always, open http://localhost:4000.
 ## Architecture and communication sketch
 
 ### Local execution and web interface
+![](doc/IMG_5707.JPG)
+
 ![](doc/webUi.png)
 
 ![](doc/websocket.png)
+
+![](doc/IMG_5706.JPG)
 
 ![](doc/token.png)
 
 ![](doc/boards.png)
 
 ### Slack communication
+![](doc/IMG_5705.JPG)
 
 ![](doc/RailMD.png)
 
