@@ -1,14 +1,16 @@
 defmodule DepartureBoardUi.SlackForwarder do
+  @moduledoc """
+  Forwards search results to Slack.
+  """
   use GenServer
   import Logger
-  alias DepartureBoardUi.{Repo,DepartureBoard,DepartureBoardChannel}
-  alias DepartureBoardUi.Router.Helpers
+  alias DepartureBoardUi.{Repo, DepartureBoardChannel}
 
   @name __MODULE__
 
   def start_link do
     info("Starting #{inspect @name}")
-    GenServer.start_link(__MODULE__, %{}, name: @name, debug: [:trace])
+    GenServer.start_link(__MODULE__, %{}, name: @name)
   end
 
   def register(token, response_url) do
@@ -26,10 +28,10 @@ defmodule DepartureBoardUi.SlackForwarder do
     %{response_url: response_url, created: created_millis} = Map.get(state, token)
     forward_departures(token, response_url, station_name, departures)
 
-    {:noreply, cleanup(state, token)}
+    {:noreply, remove_old_listeners(state, token)}
   end
 
-  def cleanup(state, token) do
+  def remove_old_listeners(state, token) do
     %{created: created_millis} = Map.get(state, token)
 
     if :os.system_time(:milli_seconds) - created_millis > 5000 do
@@ -60,22 +62,18 @@ defmodule DepartureBoardUi.SlackForwarder do
                        direction: direction,
                        name: name,
                        time: time} = board) do
+    info("Forwarding to #{url}")
 
-     info("Forwarding to #{url}")
+    payload = %{
+      response_type: "in_channel",
+      text: "Train #{name} leaves from #{station_name} with destination #{direction} at #{time}"
+    }
 
-     payload = %{
-       response_type: "in_channel",
-       text: "Train #{name} leaves from #{station_name} with destination #{direction} at #{time}"
-     }
-
-     data = Poison.encode!(payload)
-     info("Sending #{data}")
-      case HTTPoison.post(url,
-                    data,
-                      %{"content-type" => "application/json"}) do
-
-        {:ok, response} -> info("Successfully forwarded. #{inspect response}")
-        {:error, reason} -> warn(reason)
-      end
+    data = payload |> Poison.encode!
+    debug("Sending #{data}")
+    case HTTPoison.post(url, data, %{"content-type" => "application/json"}) do
+      {:ok, response} -> info("Successfully forwarded. #{inspect response}")
+      {:error, reason} -> warn(reason)
+    end
   end
 end

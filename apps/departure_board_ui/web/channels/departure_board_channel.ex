@@ -16,11 +16,14 @@ defmodule DepartureBoardUi.DepartureBoardChannel do
     {:noreply, socket}
   end
 
-
   def departureboard_ready(url, station_name) do
     info("Broadcasting #{url}")
 
     DepartureBoardUi.Endpoint.broadcast! "departureboards:ready", "departureboard_ready", %{url: url, station_name: station_name}
+  end
+
+  def departureboard_not_found(message) do
+    DepartureBoardUi.Endpoint.broadcast! "departureboards:ready", "not_found", %{message: message}
   end
 
 end

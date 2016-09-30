@@ -21,4 +21,4 @@ import "phoenix_html"
 import socket from "./socket"
 import DepartureBoard from "./departure_board"
 
-DepartureBoard.init(socket)
+DepartureBoard.init(socket, "board-container")

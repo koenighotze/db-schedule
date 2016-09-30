@@ -1,4 +1,3 @@
-# DepartureBoard
+# DB Railway Departure Info
 
-**TODO: Add description**
-
+Test project for using OTP, Phoenix, Ecto to build a service for fetching departure board data.
