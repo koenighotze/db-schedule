@@ -22,17 +22,17 @@ Then, as always, open http://localhost:4000.
 ## Architecture and communication sketch
 
 ### Local execution and web interface
-image::doc/webUi.png[]
+(doc/webUi.png)
 
-image::doc/websocket.png[]
+(doc/websocket.png)
 
-image::doc/token.png[]
+(doc/token.png)
 
-image::doc/boards.png[]
+(doc/boards.png)
 
 ### Slack communication
 
-image::doc/RailMD.png[]
+(doc/RailMD.png)
 
 ## Heroku Notepad
 
