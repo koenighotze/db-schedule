@@ -1,0 +1,12 @@
+language: elixir
+elixir:
+- 1.3.0
+otp_release:
+- 18.2.1
+deploy:
+  provider: heroku
+  api_key:
+    secure: RdiqSrfBwwh3SEPnisq4q7qF7sHtL3Z2J0wdeozSkjB8rqc/29ZHdTnjyGcyaLxpBmgSn2CQhirr0cHxYMoAcYW89zlZb2t5Vls4y159QpoeEOHFRQw4fVcO8V+F6Z3r3OOaLn1PR8gCzCGrWkX2e5fUzka2c+4TIwzjYLtiWc4N3vdXvlxmmQ1o7DuhbfaO3H1Br4TwpnZZNqVaVldByiywHg5VIt7zs2Y31D+EHyq6h0HmB1ii3RFSWMsfPGQdsLJk7TEIOeVtgSOv3q89STj3qq7aLBQ/Mm3gxmc6UP9dsQq36F69teTB+vlw0LfTeWErAvY6z3LouUT/wn5xKob524Fwjg7TKh1SIiN6ZVVwQ27I3gOr03F/sgDDo3lXGXIwQ32RD6K/SR6SN92fFOEEyuPy+XADcFuIPxf/PTpzHZ1V03mdIt6YptWmeOTNIkV1Z2LfiQNTLaRjG/bwW2r0JXWta9Kw7o2wmhJte8zGQCdnzeuH4MeWrlxc/hwlY8161/XLnpWRgyJ0ygUxzTJDMi6ZWEkCRT183XmO2CD8jhedYZcX4TU30ESzrpTf2lX5q2kny5198y/+45gkrE30Y6mvEuLf2iYB9mqBc3L4z/ME9xeM+yve2FirEkf+rmZdtVRaB3ttF4UBB2Igefvb2cF3WJTJmh11npgkppc=
+  app: protected-badlands-17194
+  on:
+    repo: koenighotze/db-schedule
