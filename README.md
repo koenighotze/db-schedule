@@ -1,5 +1,8 @@
 # DB Railway Departure Info
 
+Current build status: [![Build Status](https://travis-ci.org/koenighotze/db-schedule.svg?branch=master)](https://travis-ci.org/koenighotze/db-schedule)
+
+
 Test project for using OTP, Phoenix, Ecto to build a service for fetching departure board data.
 
 The app is deployed to heroku and available here: https://protected-badlands-17194.herokuapp.com/
