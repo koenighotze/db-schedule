@@ -15,7 +15,7 @@ defmodule DepartureBoardUi.SlackController do
   alias Dbparser.DepartureBoardServer
 
   # @token "UBtZ22XP5JISvgkhQqi9065Z"
-  @token System.get_env("SLACK_TOKEN") || raise "SLACK_TOKEN not set!"
+  @token System.get_env("SLACK_TOKEN") || Application.get_env(:departure_board_ui, :slack_token) || raise "SLACK_TOKEN not set!"
   def fetch(conn, %{
                     "token" => @token,
                     "command" => "/railinfo",

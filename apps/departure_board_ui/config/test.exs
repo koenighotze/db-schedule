@@ -6,6 +6,9 @@ config :departure_board_ui, DepartureBoardUi.Endpoint,
   http: [port: 4001],
   server: false
 
+config :departure_board_ui,
+  slack_token: "foo"
+
 # Print only warnings and errors during test
 config :logger, level: :warn
 
