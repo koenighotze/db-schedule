@@ -39,4 +39,5 @@ config :departure_board_ui, DepartureBoardUi.Repo,
   password: "postgres",
   database: "departure_board_ui_dev",
   hostname: "localhost",
+  port: 5433,
   pool_size: 10

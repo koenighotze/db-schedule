@@ -16,7 +16,8 @@ config :logger, level: :warn
 config :departure_board_ui, DepartureBoardUi.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "",
+  password: "postgres",
   database: "departure_board_ui_test",
   hostname: "localhost",
+  port: 5433,
   pool: Ecto.Adapters.SQL.Sandbox
