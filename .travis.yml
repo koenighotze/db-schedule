@@ -6,7 +6,7 @@ otp_release:
 services:
   - postgresql
 before_script:
-  - psql -c 'create database departure_board_ui_test;' -U postgres
+  - psql -c 'create database departure_board_ui_test;' -U postgres -W postgres
 deploy:
   provider: heroku
   api_key:
