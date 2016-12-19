@@ -6,9 +6,9 @@ otp_release:
 env:
 - MIX_ENV=travis
 services:
-  - postgresql
+- postgresql
 before_script:
-  - psql -c 'create database departure_board_ui_test;' -U postgres
+- psql -c 'create database departure_board_ui_test;' -U postgres
 deploy:
   provider: heroku
   api_key:
@@ -16,3 +16,6 @@ deploy:
   app: protected-badlands-17194
   on:
     repo: koenighotze/db-schedule
+notifications:
+  slack:
+    secure: C6inZJ3E8sKGIFF7FoCgQ1M35BXWU+4SuS+WJzKfmVLwMrHSlndsVbTZozoVOwwMDyNtG6GMgdsRNNdykfbXwGt82Z4JHqvJPmuxj4I/0kdu5YclxUSrt3gz8UTFif1yvtI/IBCqW1MNguZV2jozaTRn6MuLJQiLAp28eB3IhjVwnTtjBgcSBylwjfPZcy2TGvhqR43nhp3drG9KgYTVqYGP9YPAoNfGyWMBxTDOJR8AxiUoZ6fzyc2GQUOJlKr6A6o49pxUitD/MrUFR0mvz3TOwWNo/myi8xH5XXjmSkI2UPHQThGmU0AqEJV9aIrYnFwLKzx9NUzZdFoNAmNj2UxdPqRXtL72FUb2lmXQd/fZnjubknQFo6Ek/M56mk7NRmcwYlUAvj2wl0ZcSfsCk5QdFViEqrnNWLNAJuM8TqVYDah/nJhPXPPqbWuQnO5OcJSCa5YFRq0FR/cGnO5026+FIqXj3KeQGXHX4o3zT7Wbpj8lP407a1Gbje7br1UAmlREwzDV3zdbArzX8VnL/9S8No/0iJta9m2E/iOx4xfdSZnaQhMOqSbf3t9rrSndjlqYrNAaFkX6h60ZdsR/j6ZsvH0rT61YLz1d26sSkEKQ6cjw6MZhVeDvMf0pVBcPEWmjLBmNIzJBz4tgCBaYXG7Ieq5jUlIklm3fVhhOf6A=
